@@ -1,9 +1,10 @@
 import os
 from pathlib import Path
-from typing import List
+from typing import List, Union
+import json
 from dotenv import load_dotenv
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from pydantic import Field
+from pydantic import Field, field_validator
 
 # Explicitly load .env from backend directory and repository root
 BACKEND_DIR = Path(__file__).resolve().parent.parent
@@ -23,20 +24,40 @@ class Settings(BaseSettings):
     
     # AI Configuration
     AI_API_KEY: str = ""
-    AI_MODEL: str = "gemini-2.0-flash"
+    AI_MODEL: str = "gemini-3.5-flash-lite"
     AI_PROVIDER: str = "auto"  # 'auto', 'gemini', 'openai'
     AI_BASE_URL: str = ""
     
     # CORS & Frontend
     FRONTEND_URL: str = "http://localhost:5173"
-    CORS_ORIGINS: List[str] = [
+    CORS_ORIGINS: Union[List[str], str] = [
         "http://localhost:5173",
         "http://127.0.0.1:5173",
         "http://localhost:3000",
         "http://127.0.0.1:3000",
         "http://localhost:80",
         "http://localhost",
+        "*",
     ]
+
+    @field_validator("CORS_ORIGINS", mode="before")
+    @classmethod
+    def assemble_cors_origins(cls, v: Union[str, List[str]]) -> List[str]:
+        if isinstance(v, str):
+            v = v.strip()
+            if not v:
+                return ["*"]
+            if v.startswith("[") and v.endswith("]"):
+                try:
+                    parsed = json.loads(v)
+                    if isinstance(parsed, list):
+                        return [str(item).strip() for item in parsed]
+                except Exception:
+                    pass
+            return [i.strip() for i in v.split(",") if i.strip()]
+        elif isinstance(v, (list, tuple)):
+            return [str(i).strip() for i in v]
+        return ["*"]
     
     # File Limits & Storage
     MAX_FILE_SIZE_MB: int = 10
