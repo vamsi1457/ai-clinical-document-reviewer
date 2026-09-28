@@ -1,0 +1,31 @@
+[SYNTHETIC TEST CASE: CONFLICTING VITAL SIGNS & OBSERVATIONS]
+
+PATIENT PROGRESS NOTE
+Patient Name: Arthur Pendelton
+Age: 58
+Gender: Male
+MRN: SYN-440192
+
+SECTION 1 - INITIAL NURSE INTAKE (08:30 AM):
+- Temperature: 38.5 C (febrile)
+- Heart Rate: 110 bpm (tachycardic)
+- Blood Pressure: 145/95 mmHg
+- Respiratory Rate: 22 breaths/min
+- Notes: Patient appears flushed, shivering, reports high fever since last evening.
+
+SECTION 2 - PHYSICIAN EXAM NOTE (09:15 AM):
+- Temperature: 37.2 C (normothermic / afebrile without documented antipyretic administration)
+- Heart Rate: 68 bpm (normal sinus rhythm)
+- Blood Pressure: 118/74 mmHg
+- Notes: Patient is resting comfortably, skin is cool and dry. No fever noted.
+
+MEDICATIONS:
+- Metformin 500 mg oral tablet twice daily.
+- Atorvastatin 20 mg oral tablet at bedtime.
+
+ALLERGIES:
+Penicillin - Rash and hives reported in childhood.
+
+ASSESSMENT:
+Discrepancy noted between triage vital signs and physician examination records.
+Probable acute gastrointestinal viral syndrome vs resolving transient bacteremia.

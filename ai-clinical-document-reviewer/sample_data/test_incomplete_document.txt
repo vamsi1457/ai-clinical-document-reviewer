@@ -1,0 +1,12 @@
+[SYNTHETIC TEST CASE: INCOMPLETE TRUNCATED CLINICAL DOCUMENT]
+
+EMERGENCY DEPARTMENT RAPID TRANSFER SUMMARY
+Patient: David Henderson, 52M
+Arrived via EMS at 14:15
+
+History:
+Patient was found collapsed at work. Complaining of severe crushing retrosternal chest pressure radiating to...
+[DOCUMENT CUT OFF HERE - PAGE 2 MISSING]
+Electrocardiogram revealed: ST elevation in leads V1-V4...
+Immediately administered Aspirin 325 mg chewed and...
+[REST OF PAGE UNREADABLE DUE TO TORN CORNER]

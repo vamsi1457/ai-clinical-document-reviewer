@@ -1,0 +1,18 @@
+[SYNTHETIC TEST CASE: IRRELEVANT NON-CLINICAL DOCUMENT]
+
+HOSPITAL CAFETERIA & CATERING INVOICE #99482
+Facility: Central Hospital Food Services
+Date: 2026-03-20
+
+Order Summary:
+- 10x Chicken Salad Sandwiches @ $7.50
+- 5x Mineral Water 500ml @ $2.00
+- 12x Green Tea Bottles @ $2.25
+- 1x Large Fresh Fruit Tray @ $35.00
+
+Subtotal: $147.00
+Tax (8%): $11.76
+Total Amount Due: $158.76
+
+Payment Status: Paid via Corporate P-Card #****-1102
+Vendor Contact: catering@hospitalfoods.internal

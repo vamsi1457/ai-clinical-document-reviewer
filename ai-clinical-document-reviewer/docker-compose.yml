@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: clinical_postgres
+    restart: always
+    environment:
+      POSTGRES_DB: clinical_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d clinical_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: clinical_backend
+    restart: always
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/clinical_db
+      - AI_API_KEY=${AI_API_KEY}
+      - AI_MODEL=${AI_MODEL:-gemini-2.0-flash}
+      - AI_PROVIDER=${AI_PROVIDER:-auto}
+      - AI_BASE_URL=${AI_BASE_URL:-}
+      - FRONTEND_URL=http://localhost:5173
+      - MAX_FILE_SIZE_MB=10
+      - ENVIRONMENT=production
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: clinical_frontend
+    restart: always
+    environment:
+      - VITE_API_URL=http://localhost:8000/api
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

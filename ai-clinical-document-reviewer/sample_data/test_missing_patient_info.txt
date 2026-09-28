@@ -1,0 +1,29 @@
+[SYNTHETIC TEST CASE: MISSING PATIENT INFORMATION]
+
+CLINICAL TRIAGE ASSESSMENT SLIP
+Date: 2026-04-10
+Encounter: Urgent Care Walk-in
+
+PATIENT DEMOGRAPHICS:
+[Patient record sticker missing / Patient declined intake form]
+Patient ID: Unknown
+Age: Not provided
+Gender: Unspecified
+
+CHIEF COMPLAINT:
+Severe right lower quadrant abdominal pain for 6 hours.
+
+VITALS:
+- BP: 142/88 mmHg
+- HR: 104 bpm
+- Temp: 38.1 C
+- SpO2: 99%
+
+MEDICATIONS:
+Patient states taking "some blood pressure pill" but unable to recall name or dosage.
+
+ALLERGIES:
+Unknown / unrecorded.
+
+ASSESSMENT:
+Acute right lower quadrant pain. Possible acute appendicitis. Urgent ultrasound requested.
