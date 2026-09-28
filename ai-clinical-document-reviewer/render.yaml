@@ -1,11 +1,12 @@
 # Render Blueprint for AI Clinical Document Reviewer
-# https://render.com/docs/blueprint-spec
+# 100% FREE TIER - ZERO PAYMENT / ZERO CREDIT CARD REQUIRED
 
 services:
-  # Backend API Service (FastAPI + Python + OCR)
+  # 1. Backend Web Service (FastAPI + Python + OCR)
   - type: web
     name: ai-clinical-reviewer-backend
     runtime: python
+    plan: free
     rootDir: ai-clinical-document-reviewer/backend
     buildCommand: "pip install -r requirements.txt"
     startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
@@ -13,9 +14,7 @@ services:
       - key: PYTHON_VERSION
         value: 3.11.9
       - key: DATABASE_URL
-        fromDatabase:
-          name: clinical-db
-          property: connectionString
+        value: "sqlite:///./clinical_db.sqlite"
       - key: AI_PROVIDER
         value: gemini
       - key: AI_MODEL
@@ -25,7 +24,7 @@ services:
       - key: CORS_ORIGINS
         value: "*"
 
-  # Frontend Web UI (React + Vite static site)
+  # 2. Frontend Web UI (React + Vite static site)
   - type: web
     name: ai-clinical-reviewer-frontend
     runtime: static
@@ -42,9 +41,3 @@ services:
           type: web
           name: ai-clinical-reviewer-backend
           property: host
-
-databases:
-  - name: clinical-db
-    databaseName: clinical_db
-    user: clinical_user
-    plan: free
