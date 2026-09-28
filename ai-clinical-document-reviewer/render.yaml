@@ -46,5 +46,5 @@ services:
 databases:
   - name: clinical-db
     databaseName: clinical_db
-    user: postgres
+    user: clinical_user
     plan: free
